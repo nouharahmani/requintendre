@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercice 01 - Wikidata et rawgraphs</title>
+</head>
+<body>
+    <h1>Exercice no. 01</h1>
+    <p>
+        <code>
+            <pre>
+                SELECT DISTINCT ?film ?box_office ?genre_artistique ?genre_artistiqueLabel ?titre ?distinction_reçue ?distinction_reçueLabel ?image WHERE {
+                    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+                    ?film wdt:P31 wd:Q11424;
+                      wdt:P2142 ?box_office;
+                      wdt:P136 ?genre_artistique;
+                      wdt:P1476 ?titre;
+                      wdt:P166 ?distinction_reçue;
+                      wdt:P18 ?image
+                  }
+                  LIMIT 300
+            </pre>
+        </code>
+    </p>
+    <p>Lien de la requête : <a href="https://w.wiki/8rEK">https://w.wiki/8rEK</a></p>
+
+    <iframe style="width: 80vw; height: 50vh; border: none;" src="https://query.wikidata.org/embed.html#SELECT%20DISTINCT%20%3Ffilm%20%3Fbox_office%20%3Fgenre_artistique%20%3Fgenre_artistiqueLabel%20%3Ftitre%20%3Fdistinction_re%C3%A7ue%20%3Fdistinction_re%C3%A7ueLabel%20%3Fimage%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%20%20%3Ffilm%20wdt%3AP31%20wd%3AQ11424%3B%0A%20%20%20%20wdt%3AP2142%20%3Fbox_office%3B%0A%20%20%20%20wdt%3AP136%20%3Fgenre_artistique%3B%0A%20%20%20%20wdt%3AP1476%20%3Ftitre%3B%0A%20%20%20%20wdt%3AP166%20%3Fdistinction_re%C3%A7ue%3B%0A%20%20%20%20wdt%3AP18%20%3Fimage%0A%7D%0ALIMIT%20300" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+    <h2>Diagramme en Arcs Illustrant les Performances au Box Office des Films</h2>
+    <div>
+        <a href="filmboxoffice.svg"><img src="filmboxoffice.svg"alt="Arc Diagram" width="1300"></a>
+    </div>
+    <h3>Circle Packing : la Corrélation entre les Genres et les Recettes au Box Office</h3>
+    <div>
+        <a href="film_boxoffice_genre.svg"><img src="film_boxoffice_genre.svg"alt="circle packing" width="1300"></a>
+    </div>
+    <h4>Diagramme Alluvial :Relations entre Films, Genres et Recettes au Box Office</h4>
+    <div>
+        <a href="graphe_film_genre_box_office.svg"><img src="graphe_film_genre_box_office.svg"alt="alluvial diagram" width="1300"></a>
+    </div>
+
+</body>
+</html>
